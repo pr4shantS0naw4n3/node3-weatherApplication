@@ -59,8 +59,56 @@ npm start
 heroku login
 ```
 This will log you in to heroku via cli
+#
+ ### Generate SSH Key
 
+ git bash to the project folder
 
+ **Check if already exist**
+ ```
+ ls -a -l ~/.ssh
+ ```
+ **Generate the KEYS**
+ ```
+ ssh-keygen -t rsa -b 4096 -C "emailID"
+ ```
+ **Check if generated**
+ ```
+ ls -a -l ~/.ssh
+ ```
+ **you will see two files**
+ // Public file which we can share
+ id_rsa.pub
+ 
+ // Private which will be with us 
+ id_rsa
+ 
+ **NEXT**
+ **Start the ssh agent**
+ ```
+ eval $(ssh-agent -s) 
+ ```
+ This will give you the Agent PID
+
+ **Add the key**
+ ```
+ ssh-add ~/.ssh/id_rsa
+ ```
+ The Identity will be added
+
+ **To use/get  the key**
+ ```
+ cat ~/.ssh/id_rsa.pub
+ ```
+ Copy the key and paste it to the git hub(or any other repo)
+
+ **To TEST if the key is working properly**
+ ```
+ ssh -T git@github.com
+ ```
+#
+**Now after the key is generated add the key to Heroku to use it.**
+#
 5. Add ssh key to heroku
 ```
 heroku keys:add
