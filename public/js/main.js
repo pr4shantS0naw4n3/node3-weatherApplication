@@ -30,7 +30,7 @@ weather_form.addEventListener('submit', (e) => {
                 temperature.innerHTML = "<b>Temperature:</b> "+data.forecastData.current_temperature+'°C'
                 wind.innerHTML = "<b>Wind Speed:</b> "+data.forecastData.weatherData.wind.speed+' mph'
                 weather.innerHTML = "<b>Weather Prediction:</b> " + data.forecastData.weather
-                document.getElementById('weather').className=data.forecastData.weather === 'Rain'?'rainy':data.forecastData.weather === 'Clouds'?'cloudy':data.forecastData.weather === 'Clear'?'sunny':data.forecastData.weather === 'Haze'?'stormy':'snowy'
+                document.getElementById('weather').className=data.forecastData.weather === 'Rain'?'rainy':data.forecastData.weather === 'Clouds'?'cloudy':data.forecastData.weather === 'Clear'?'sunny':(data.forecastData.weather === 'Haze'|| data.forecastData.weather === 'Thunderstorm')?'stormy':'snowy'
             }
         })
     })
