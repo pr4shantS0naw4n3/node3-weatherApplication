@@ -8,9 +8,15 @@ const getWeatherDetails = (options, callback) => {
             callback("Location Not found", undefined);
         } else {
             const data = body
+            console.log(data);
             const current_temperature = (data.main.temp - 273.15).toFixed(2);
             const clouds = data.clouds.all
-            callback(undefined, "It is currently " + current_temperature + " degrees. There is " + clouds + "% chance of rain.")
+            const respData = {
+                weatherData: data,
+                current_temperature:current_temperature,
+                weather:data.weather[0].main
+            }
+            callback(undefined, respData)
         }
     })
 };

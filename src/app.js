@@ -23,28 +23,42 @@ hbs.registerPartials(partialsPath)
 // Setup static directory to serve
 // Express will match the root url to this since index.html is the initial html for web applications
 app.use(express.static(staticPath))
-
+const isWeatherActive = false
+const isAboutActive = false
+const isHelpActive=false
 
 app.get('', (req, res) => {
+    this.isWeatherActive = true;
+    this.isAboutActive=false
+    this.isHelpActive=false
     res.render('index', {
         title: 'Weather Forecast',
-        name: 'Prashant'
+        name: 'Prashant',
+        isWeatherActive:this.isWeatherActive?'active':''
     })
 })
 
 app.get('/about', (req, res) => {
+    this.isWeatherActive = false;
+    this.isAboutActive=true
+    this.isHelpActive = false
     res.render('about', {
         title: 'About Us',
-        name: 'Prashant'
+        name: 'Prashant',
+        isAboutActive:this.isAboutActive?'active':''
     })
 })
 
 app.get('/help', (req, res) => {
+    this.isWeatherActive = false;
+    this.isAboutActive=false
+    this.isHelpActive = true
     const message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     res.render('help', {
         title: 'Help',
         message: message,
-        name: 'Prashant'
+        name: 'Prashant',
+        isHelpActive:this.isHelpActive?'active':''
     })
 })
 
@@ -65,7 +79,6 @@ app.get('/weather', (req, res) => {
                 } else {
                     const data = {
                         forecastData: forecastData,
-                        location:req.query.location
                     }
                     res.send(data)
                 }

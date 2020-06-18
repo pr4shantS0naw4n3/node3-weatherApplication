@@ -2,21 +2,36 @@
 <html>
 <title>Weather | Home</title>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/weather_icon.png">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="main-content">
         {{>header}}
-        <p>Use this site to get your weather</p>
 
         <form>
-            <input placeholder="Location">
-            <button>Search</button>
+            <div class="container2">
+                <input type="text" id="box" placeholder="Enter City Name Here..." class="search__box" autocomplete="off">
+                <button class="fas fa-search search__icon" id="icon" onclick="toggleShow()">
+                </button>
+            </div>
         </form>
-        <p id='message1'></p>
-        <p id='message2'></p>
+        <div class="container">
+            <h2 id="loadingHeader"></h2>
+            <div id="weather"></div>
+            <div class="messageClass">
+                <p id="city"></p>
+                <p id="weatherDesc"></p>
+                <p id="Temprature"></p>
+                <p id="wind"></p>
+            </div>
+        </div>
     </div>
 
     {{>footer}}
