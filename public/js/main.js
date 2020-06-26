@@ -18,10 +18,13 @@ weather_form.addEventListener('submit', (e) => {
     wind.textContent=''
     weather.textContent = ''
     anim.textContent = ''
+    document.getElementById('container').style.background="none"
     fetch('/weather?location='+location).then((response) => {
         response.json().then((data)=> {
             if (data.error) {
-                loadingHeader.textContent="Location Not Found"
+                loadingHeader.textContent = "Not Found"
+                anim.textContent = ''
+
             } else {
                 console.log(data);
                 
@@ -30,7 +33,8 @@ weather_form.addEventListener('submit', (e) => {
                 temperature.innerHTML = "<b>Temperature:</b> "+data.forecastData.current_temperature+'°C'
                 wind.innerHTML = "<b>Wind Speed:</b> "+data.forecastData.weatherData.wind.speed+' mph'
                 weather.innerHTML = "<b>Weather Prediction:</b> " + data.forecastData.weather
-                document.getElementById('weather').className=data.forecastData.weather === 'Rain'?'rainy':data.forecastData.weather === 'Clouds'?'cloudy':data.forecastData.weather === 'Clear'?'sunny':(data.forecastData.weather === 'Haze'|| data.forecastData.weather === 'Thunderstorm')?'stormy':'snowy'
+                document.getElementById('weather').className = data.forecastData.weather === 'Rain' ? 'rainy' : data.forecastData.weather === 'Clouds' ? 'cloudy' : data.forecastData.weather === 'Clear' ? 'sunny' : (data.forecastData.weather === 'Haze' || data.forecastData.weather === 'Thunderstorm') ? 'stormy' : 'snowy'
+                document.getElementById('container').style.background="black"
             }
         })
     })

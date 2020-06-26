@@ -14,7 +14,6 @@
 <body>
     <div class="main-content">
         {{>header}}
-
         <form>
             <div class="container2">
                 <input type="text" id="box" placeholder="Enter City Name Here..." class="search__box" autocomplete="off">
@@ -22,9 +21,9 @@
                 </button>
             </div>
         </form>
-        <div class="container">
+        <div id="weather"></div>
+        <div id="container" class="container">
             <h2 id="loadingHeader"></h2>
-            <div id="weather"></div>
             <div class="messageClass">
                 <p id="city"></p>
                 <p id="weatherDesc"></p>
