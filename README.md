@@ -2,7 +2,7 @@
 A Sample Weather Forecast Application using node.js, express.js and Open weather Api
 
 # Live Working Application
-[stark-weather-application.herokuapp.com](stark-weather-application.herokuapp.com)
+https://stark-weather-application.herokuapp.com
 
 ## Requirements
 - Node
